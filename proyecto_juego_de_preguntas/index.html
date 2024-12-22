@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Preguntas</title>
+</head>
+<body onload="IniciarcuentaRegresiva()">
+    <h1>RESPONDE ANTES QUE SE AGOTE EL TIEMPO<span id="cuentaRegresiva"></span></h1>
+    <div>
+        <p>1. ¿Con qué palabra clave declaras una variable en JavaScript?</p>
+        <input type="text" id="respuesta01">
+        <p>2. ¿Cómo se llama la estructura que permite tomar decisiones en el código?</p>
+        <input type="text" id="respuesta02">
+        <p>3. ¿Qué tipo de datos devuelve la función typeof en JavaScript?</p>
+        <input type="text" id="respuesta03">
+        <p>4. ¿Qué método se utiliza para agregar un elemento al final de un arreglo en JavaScript?</p>
+        <input type="text" id="respuesta04">
+        <p>5. ¿Qué valor devuelve una función si no tiene una sentencia return?</p>
+        <input type="text" id="respuesta05">
+    </div>
+    <br>
+    <button onclick="enviarTest()">ENVIAR</button>
+    <br><br>
+    <button onclick="reiniciarTest()">REINICIAR</button>
+    
+
+    <script>
+    let tiempoCumplido;
+    let intervaloTiempo;
+
+    function IniciarcuentaRegresiva(){
+        document.getElementById("cuentaRegresiva").textContent = 30;
+         intervaloTiempo = setInterval (tictac,1000);
+    }
+
+    function tictac(){
+        let tiempo = document.getElementById("cuentaRegresiva").textContent;
+        document.getElementById("cuentaRegresiva").textContent = tiempo-1;
+    }
+
+    function tiempoMax(){
+        clearInterval(intervaloTiempo);
+        document.getElementById("cuentaRegresiva").textContent=0;
+        alert("GAME OVER");
+    }
+
+    function enviarTest(){
+        clearTimeout(tiempoCumplido);
+                clearInterval(intervaloTiempo);
+
+                let fecha = new Date();
+                let respuesta01 = document.getElementById("respuesta01").value;
+                let respuesta02 = document.getElementById("respuesta02").value;
+                let respuesta03 = document.getElementById("respuesta03").value;
+                let respuesta04 = document.getElementById("respuesta04").value;
+                let respuesta05 = document.getElementById("respuesta05").value;
+
+                let mensaje = fecha.toLocaleDateString("es-Es") + "\n" +
+                                "1. " + respuesta01 + "\n" +
+                                "2. " + respuesta02 + "\n" +
+                                "3. " + respuesta03 + "\n" +
+                                "4. " + respuesta04 + "\n" +
+                                "5. " + respuesta05;
+
+                alert(mensaje);
+            }
+
+            function reiniciarTest() {
+                location.reload();
+            
+    }
+       
+    </script>
+</body>
+</html>
